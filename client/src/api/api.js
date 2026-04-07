@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://arcade-1-iduu.onrender.com/api";
 const USERNAME_KEY = "arcade_username";
 
 export const normalizeUsername = (value) => value.trim().toLowerCase();

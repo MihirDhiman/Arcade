@@ -207,7 +207,7 @@ const Runner = () => {
         ref={canvasRef}
         width={CANVAS.width}
         height={CANVAS.height}
-        className="rounded-2xl ui-canvas"
+        className="rounded-2xl border border-white/20"
       />
 
       <p className="mt-2 text-sm text-gray-400">
