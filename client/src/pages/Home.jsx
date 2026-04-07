@@ -5,10 +5,16 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden">
+      <div className="mario-layer" aria-hidden="true">
+        <span className="mario-run run-1" />
+        <span className="mario-run run-2 reverse" />
+        <span className="mario-run run-3" />
+        <span className="mario-run run-4 reverse" />
+      </div>
       <Navbar />
 
-      <div className="p-6 max-w-6xl mx-auto">
+      <div className="p-6 max-w-6xl mx-auto relative z-10">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

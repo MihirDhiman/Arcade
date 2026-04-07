@@ -112,6 +112,107 @@ h4 {
   pointer-events: none;
 }
 
+.pacman-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pacman-run {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 45deg,
+    #facc15 0deg 300deg,
+    transparent 300deg 360deg
+  );
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
+  animation: pacman-move 18s linear infinite,
+    pacman-chomp 0.4s infinite;
+}
+
+.pacman-run::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #1f2937;
+  top: 6px;
+  left: 12px;
+}
+
+.pacman-run::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.6);
+  transform: translateY(-50%);
+  box-shadow:
+    12px 0 0 rgba(250, 204, 21, 0.5),
+    24px 0 0 rgba(250, 204, 21, 0.4),
+    36px 0 0 rgba(250, 204, 21, 0.3);
+}
+
+.pacman-run.reverse {
+  transform: scaleX(-1);
+  animation-direction: reverse, normal;
+}
+
+.pacman-run.run-1 {
+  top: 18%;
+  animation-duration: 22s, 0.35s;
+}
+
+.pacman-run.run-2 {
+  top: 38%;
+  animation-duration: 26s, 0.35s;
+}
+
+.pacman-run.run-3 {
+  top: 62%;
+  animation-duration: 20s, 0.35s;
+}
+
+.pacman-run.run-4 {
+  top: 78%;
+  animation-duration: 28s, 0.35s;
+}
+
+@keyframes pacman-move {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+@keyframes pacman-chomp {
+  0%,
+  100% {
+    background: conic-gradient(
+      from 45deg,
+      #facc15 0deg 310deg,
+      transparent 310deg 360deg
+    );
+  }
+  50% {
+    background: conic-gradient(
+      from 45deg,
+      #facc15 0deg 350deg,
+      transparent 350deg 360deg
+    );
+  }
+}
+
 .ui-panel {
   background: var(--surface);
   border: 1px solid var(--panel-border);
@@ -181,7 +282,7 @@ h4 {
   transition: transform 0.5s;
 }
 
-.card-front,
+.card-front ,
 .card-back {
   position: absolute;
   width: 100%;
@@ -195,6 +296,8 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 0.5rem;
+  height: 100%;
 }
 
 .card-inner:hover {
@@ -207,4 +310,73 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.mario-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mario-run {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.35));
+  animation: mario-move 18s linear infinite;
+}
+
+.mario-run.reverse {
+  transform: scaleX(-1);
+  animation-direction: reverse;
+}
+
+.mario-run::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/d43e7461bd483782a3e612fb950b4007-removebg-preview.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: mario-bob 0.6s ease-in-out infinite;
+}
+
+.mario-run.run-1 {
+  top: 18%;
+  animation-duration: 22s;
+}
+
+.mario-run.run-2 {
+  top: 38%;
+  animation-duration: 26s;
+}
+
+.mario-run.run-3 {
+  top: 62%;
+  animation-duration: 20s;
+}
+
+.mario-run.run-4 {
+  top: 78%;
+  animation-duration: 28s;
+}
+
+@keyframes mario-move {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+@keyframes mario-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }

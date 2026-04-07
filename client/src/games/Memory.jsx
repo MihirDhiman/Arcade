@@ -146,7 +146,7 @@ const Memory = () => {
                 }}
             >
                 {/* FRONT */}
-                <div className="card-front">
+                <div className="card-front ">
                 ?
                 </div>
 

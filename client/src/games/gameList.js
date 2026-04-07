@@ -21,7 +21,7 @@ const games = [
   },
   {
     id: "match3",
-    name: "Match-3",
+    name: "Match",
     description: "Match tiles and score big.",
   },
 ];

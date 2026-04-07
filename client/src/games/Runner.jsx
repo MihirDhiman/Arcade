@@ -27,6 +27,7 @@ const Runner = () => {
   const obstacles = useRef([]);
 
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0);
   const [gameOver, setGameOver] = useState(false);
 
   const speed = useRef(4);
@@ -112,7 +113,7 @@ const Runner = () => {
         p.y + p.height > obs.y
       ) {
         if (!savedRef.current) {
-          saveScore("runner", score);
+          saveScore("runner", scoreRef.current);
           savedRef.current = true;
         }
         gameOverRef.current = true;
@@ -124,7 +125,11 @@ const Runner = () => {
     speed.current += 0.001;
 
     // Score
-    setScore((prev) => prev + 1);
+    setScore((prev) => {
+      const next = prev + 1;
+      scoreRef.current = next;
+      return next;
+    });
   };
 
   const draw = (ctx) => {
@@ -192,6 +197,7 @@ const Runner = () => {
     obstacles.current = [];
     speed.current = 4;
 
+    scoreRef.current = 0;
     setScore(0);
     setGameOver(false);
     if (loopRef.current) {

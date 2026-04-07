@@ -21,6 +21,7 @@ const Snake = () => {
   const savedRef = useRef(false);
 
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0);
   const [gameOver, setGameOver] = useState(false);
 
   const randomFood = (snake) => {
@@ -36,7 +37,7 @@ const Snake = () => {
 
   const endGame = () => {
     if (!savedRef.current) {
-      saveScore("snake", score);
+      saveScore("snake", scoreRef.current);
       savedRef.current = true;
     }
     gameOverRef.current = true;
@@ -77,7 +78,11 @@ const Snake = () => {
     // Eat food
     const food = foodRef.current;
     if (newHead.x === food.x && newHead.y === food.y) {
-      setScore((prev) => prev + 10);
+      setScore((prev) => {
+        const next = prev + 10;
+        scoreRef.current = next;
+        return next;
+      });
       foodRef.current = randomFood(newSnake);
     } else {
       newSnake.pop();
@@ -196,6 +201,7 @@ const Snake = () => {
     foodRef.current = randomFood(snakeRef.current);
     lastMoveTime.current = 0;
 
+    scoreRef.current = 0;
     setScore(0);
     setGameOver(false);
     draw();

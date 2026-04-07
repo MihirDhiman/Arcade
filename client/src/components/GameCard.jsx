@@ -15,7 +15,7 @@ const GameCard = ({ game }) => {
     >
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs uppercase tracking-widest ui-muted">
-          Mini Game
+          Game
         </span>
         <span className="text-xs px-2.5 py-1 rounded-full bg-white/10">
           {game.id}
