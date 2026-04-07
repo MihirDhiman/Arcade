@@ -1,0 +1,18 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../pages/Home";
+import Game from "../pages/Game";
+import Leaderboard from "../pages/Leaderboard";
+
+const AppRouter = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/game/:gameId" element={<Game />} />
+        <Route path="/leaderboard/:gameId" element={<Leaderboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default AppRouter;
